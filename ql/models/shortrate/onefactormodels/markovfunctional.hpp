@@ -348,9 +348,6 @@ namespace QuantLib {
                                                     : fixParameters);
         }
 
-        /*! \deprecated Use the other overload.
-                        Deprecated in version 1.18.
-        */
         void calibrate(
             const std::vector<ext::shared_ptr<BlackCalibrationHelper> > &helpers,
             OptimizationMethod &method, const EndCriteria &endCriteria,
