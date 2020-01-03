@@ -348,6 +348,11 @@ namespace QuantLib {
                                                     : fixParameters);
         }
 
+        // VC++ warns when overriding a deprecated method
+        #if defined(QL_PATCH_MSVC)
+        #pragma warning(push)
+        #pragma warning(disable:4996)
+        #endif
         void calibrate(
             const std::vector<ext::shared_ptr<BlackCalibrationHelper> > &helpers,
             OptimizationMethod &method, const EndCriteria &endCriteria,
@@ -361,6 +366,9 @@ namespace QuantLib {
 
             calibrate(tmp, method, endCriteria, constraint, weights, fixParameters);
         }
+        #if defined(QL_PATCH_MSVC)
+        #pragma warning(pop)
+        #endif
 
         void update() {
             LazyObject::update();
